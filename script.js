@@ -11,6 +11,24 @@ function startGame() {
     gameStarted = true;
 }
 
+//shuffle cards at loading page
+(function shuffle() {
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * 12);
+        card.style.order = randomPos;
+    });
+})();
+
+//shuffle cards
+function shuffle() {
+    setTimeout(() => {
+        cards.forEach(card => {
+            let randomPos = Math.floor(Math.random() * 12);
+            card.style.order = randomPos;
+        });
+    }, 1500);
+}
+
 function flipCard() {
     if (!gameStarted || lockBoard || this === firstCard) {
         return;
@@ -64,15 +82,14 @@ function resetBoard() {
     [firstCard, secondCard] = [null, null];
 }
 
-(function shuffle() {
-    cards.forEach(card => {
-        let randomPos = Math.floor(Math.random() * 12);
-        card.style.order = randomPos;
-    });
-})();
-
 function resetGame() {
-    console.log('click');
+    cards.forEach(card => {
+        if (card.classList.contains('flip')) {
+            card.classList.remove('flip');
+            card.addEventListener('click', flipCard);
+        }
+    })
+    shuffle();
 }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
