@@ -87,8 +87,8 @@ function resetGame() {
             card.classList.remove('flip');
         }
     })
+    shuffle();
     setTimeout(() => {
-        shuffle();
         startGame();
     }, 1500);
 }
