@@ -9,16 +9,35 @@ let lockBoard = false;
 let firstCard, secondCard;
 let gameStarted = false;
 let moves = 0;
+let time = 0;
+let interval = 0;
 
 function startGame() {
     gameStarted = true;
     cards.forEach(card => card.addEventListener('click', flipCard));
+    startTime();
 }
 
 function endGame() {
+    endTime();
     gameStarted = false;
     cards.forEach(card => card.removeEventListener('click', flipCard));
 }
+
+//setting timer
+// function startTime() {
+//     interval = setInterval(timeElapse, 1000);
+// }
+
+// function timeElapse() {
+//     time++;
+//     timeBoard.textContent = time;
+// }
+
+// function endTime() {
+//     clearInterval(interval);
+// }
+//end of setting timer
 
 //shuffle cards
 function shuffle() {
