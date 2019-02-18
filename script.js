@@ -24,7 +24,7 @@ function endGame() {
 function shuffle() {
     setTimeout(() => {
         cards.forEach(card => {
-            let randomPos = Math.floor(Math.random() * 12);
+            let randomPos = Math.floor(Math.random() * 16);
             card.style.order = randomPos;
         });
     }, 500);
