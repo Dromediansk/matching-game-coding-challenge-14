@@ -8,11 +8,20 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: grey;
+    background: linear-gradient(to left top, rgb(0, 0, 83), rgb(226, 226, 226));
+}
+
+.title {
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Shadows Into Light', cursive;
+    text-transform: uppercase;
 }
 
 .navbar {
     background: black;
+    border-top: 2px solid #ccc;
     border-bottom: 2px solid #ccc;
     display: flex;
     flex-direction: column;
@@ -21,12 +30,45 @@ body {
     width: 100vw;
 }
 
+.navbar-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.moves-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.moves-container h3 {
+    color: rgba(236, 232, 232, 0.884);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.moves-container span {
+    margin: 0 1rem;
+}
+
+.moves {
+    background: rgba(236, 232, 232, 0.884);
+    padding: 0rem 2rem;
+    line-height: 1;
+    border-radius: 1rem;
+    font-size: 2rem;
+  }
+
 .btn {
     padding: 10px;
     font-size: 1.5rem;
     background: black;
     color: #ccc;
-    border: none;
+    border: 2px solid rgba(236, 232, 232, 0.884);
+    border-radius: 10px;
     cursor: pointer;
     outline: none;
 }

@@ -1,11 +1,13 @@
 const cards = document.querySelectorAll('.memory-card');
 const start = document.querySelector('#start');
 const reset = document.querySelector('#reset');
+const movesBoard = document.querySelector('.moves');
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let gameStarted = false;
+let moves = 0;
 
 function startGame() {
     gameStarted = true;
@@ -46,6 +48,7 @@ function flipCard() {
     secondCard = this;
 
     checkForMatch();
+    incrementMoves();
 }
 
 function checkForMatch() {
@@ -75,6 +78,11 @@ function unflipCards() {
     }, 1500);
 }
 
+function incrementMoves() {
+    moves++;
+    movesBoard.textContent = moves;
+}
+
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
@@ -82,12 +90,17 @@ function resetBoard() {
 
 function resetGame() {
     endGame();
+    //reset moves
+    moves = 0;
+    movesBoard.textContent = moves;
+    //unflip all cards
     cards.forEach(card => {
         if (card.classList.contains('flip')) {
             card.classList.remove('flip');
         }
     })
     shuffle();
+    //after 1,5s start new game
     setTimeout(() => {
         startGame();
     }, 1500);

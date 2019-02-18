@@ -6,15 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Matching Game</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
+    <div class="title">
+        <h1>Flip & Match</h1>
+        <h4>Memory game</h4>
+    </div>
     <nav class="navbar">
-        <div>
+        <div class="navbar-container">
             <button class="btn" id="start"><i class="far fa-play-circle"></i></button>
             <button class="btn" id="reset"><i class="fas fa-undo-alt"></i></button>
+            <div class="moves-container">
+                <h3>Moves:</h3><span class="moves">0</span>
+            </div>
         </div>
     </nav>
+    
     <section class="memory-game">
         <div class="memory-card" data-name="aurelia">
             <img class="front-face" src="img/aurelia.svg" alt="Aurelia"/>
