@@ -2,42 +2,71 @@ const cards = document.querySelectorAll('.memory-card');
 const start = document.querySelector('#start');
 const reset = document.querySelector('#reset');
 const movesBoard = document.querySelector('.moves');
-const timeBoard = document.querySelector('.time');
+const time = document.querySelector('#time');
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let gameStarted = false;
-let moves = 0;
-let time = 0;
-let interval = 0;
+let moves, timer, seconds = 0;
+let t;
+let timeRunning = false;
+
+//setting timer
+function add() {
+    seconds++;
+    time.textContent = seconds;
+}
+
+function startTimer() {
+    t = setInterval(add, 1000);
+    timeRunning = true;
+}
+
+function stopTimer() {
+    clearInterval(t);
+    timeRunning = false;
+}
+
+function clearTimer(){
+    stopTimer();
+    time.textContent = 0;
+    seconds = 0;
+}
+//end of setting timer
 
 function startGame() {
     gameStarted = true;
     cards.forEach(card => card.addEventListener('click', flipCard));
-    startTime();
+    if (!timeRunning) {
+        startTimer();
+    }
 }
 
 function endGame() {
-    endTime();
+    stopTimer();
     gameStarted = false;
     cards.forEach(card => card.removeEventListener('click', flipCard));
 }
 
-//setting timer
-// function startTime() {
-//     interval = setInterval(timeElapse, 1000);
-// }
-
-// function timeElapse() {
-//     time++;
-//     timeBoard.textContent = time;
-// }
-
-// function endTime() {
-//     clearInterval(interval);
-// }
-//end of setting timer
+function resetGame() {
+    endGame();
+    clearTimer();
+    //reset moves
+    moves = 0;
+    movesBoard.textContent = moves;
+    //unflip all cards
+    cards.forEach(card => {
+        if (card.classList.contains('flip')) {
+            card.classList.remove('flip');
+        }
+    })
+    shuffle();
+    //after 1,5s start new game
+    setTimeout(() => {
+        startGame();
+    }, 1500);
+}
 
 //shuffle cards
 function shuffle() {
@@ -106,24 +135,6 @@ function incrementMoves() {
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
-}
-
-function resetGame() {
-    endGame();
-    //reset moves
-    moves = 0;
-    movesBoard.textContent = moves;
-    //unflip all cards
-    cards.forEach(card => {
-        if (card.classList.contains('flip')) {
-            card.classList.remove('flip');
-        }
-    })
-    shuffle();
-    //after 1,5s start new game
-    setTimeout(() => {
-        startGame();
-    }, 1500);
 }
 
 window.onload = function() {

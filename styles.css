@@ -12,7 +12,9 @@ body {
 }
 
 .title {
-    height: 15vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
     text-align: center;
     font-size: 2rem;
     font-family: 'Shadows Into Light', cursive;
