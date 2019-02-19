@@ -11,6 +11,19 @@ let gameStarted = false;
 let moves = timer = seconds = 0;
 let t;
 
+// function checkForEndGame() {
+//     let cardsFlipped = cards.forEach(card => {
+//         if (card.classList.contains('flip')) {
+//             return true;
+//         }
+//     })
+//     if(cardsFlipped) {
+//         console.log('winner')
+//     }
+// }
+
+// checkForEndGame();
+
 //setting timer
 function add() {
     seconds++;
@@ -110,6 +123,7 @@ function disableCards() {
     secondCard.removeEventListener('click', flipCard);
 
     resetBoard();
+    checkForEndGame();
 }
 
  //not a match
