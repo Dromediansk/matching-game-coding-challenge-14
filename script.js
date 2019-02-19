@@ -11,13 +11,6 @@ let gameStarted = false;
 let moves = timer = seconds = 0;
 let t;
 
-function checkForEndGame() {
-    let cardsFlipped = cards.forEach(card => {
-        return card.classList.contains('flip')
-    })
-    console.log(cardsFlipped);
-}
-
 //setting timer
 function add() {
     seconds++;
@@ -111,6 +104,16 @@ function checkForMatch() {
     isMatch ? disableCards() : unflipCards();
 }
 
+function checkForEndGame() {
+    let cardsArr = Array.from(cards);
+    let flippedCards = cardsArr.every((card) => {
+        return card.classList.contains('flip');
+    })
+    if (flippedCards) {
+        endGame();
+    }
+}
+
 //it's a match
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
@@ -145,7 +148,6 @@ function resetBoard() {
 
 window.onload = function() {
     shuffle();
-    checkForEndGame();
 }
 
 start.addEventListener('click', startGame);

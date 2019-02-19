@@ -50,7 +50,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Quicksand', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2em;
 }
 
 .time-container h3,
@@ -59,9 +59,9 @@ body {
 }
 
 #time, #moves {
-    padding: 0rem 1.5rem;
+    padding: 0rem 0.3em 0 1em;
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.2em;
   }
 
 .btn {
