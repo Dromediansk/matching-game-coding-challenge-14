@@ -36,7 +36,11 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+.navbar-container > div, button {
+    margin: 0 5rem;
 }
 
 .box {
@@ -45,7 +49,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-family: 'Shadows Into Light', cursive;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1.5rem;
 }
 
@@ -54,14 +58,14 @@ body {
     text-transform: uppercase;
 }
 
-.time, .moves {
+#time, #moves {
     padding: 0rem 1.5rem;
     margin: 0;
     font-size: 2rem;
   }
 
 .btn {
-    padding: 0.4rem;
+    padding: 0.5rem;
     font-size: 1.4rem;
     background: black;
     color: #ccc;

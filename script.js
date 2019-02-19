@@ -1,14 +1,14 @@
 const cards = document.querySelectorAll('.memory-card');
 const start = document.querySelector('#start');
 const reset = document.querySelector('#reset');
-const movesBoard = document.querySelector('.moves');
+const movesBoard = document.querySelector('#moves');
 const time = document.querySelector('#time');
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let gameStarted = false;
-let moves, timer, seconds = 0;
+let moves = timer = seconds = 0;
 let t;
 let timeRunning = false;
 
@@ -127,6 +127,7 @@ function unflipCards() {
     }, 1500);
 }
 
+//moves
 function incrementMoves() {
     moves++;
     movesBoard.textContent = moves;
