@@ -10,7 +10,6 @@ let firstCard, secondCard;
 let gameStarted = false;
 let moves = timer = seconds = 0;
 let t;
-let timeRunning = false;
 
 //setting timer
 function add() {
@@ -20,12 +19,10 @@ function add() {
 
 function startTimer() {
     t = setInterval(add, 1000);
-    timeRunning = true;
 }
 
 function stopTimer() {
     clearInterval(t);
-    timeRunning = false;
 }
 
 function clearTimer(){
@@ -36,10 +33,10 @@ function clearTimer(){
 //end of setting timer
 
 function startGame() {
-    gameStarted = true;
-    cards.forEach(card => card.addEventListener('click', flipCard));
-    if (!timeRunning) {
+    if (!gameStarted) {
+        cards.forEach(card => card.addEventListener('click', flipCard));
         startTimer();
+        gameStarted = true;
     }
 }
 
