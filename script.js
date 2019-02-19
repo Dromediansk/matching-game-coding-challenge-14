@@ -11,18 +11,12 @@ let gameStarted = false;
 let moves = timer = seconds = 0;
 let t;
 
-// function checkForEndGame() {
-//     let cardsFlipped = cards.forEach(card => {
-//         if (card.classList.contains('flip')) {
-//             return true;
-//         }
-//     })
-//     if(cardsFlipped) {
-//         console.log('winner')
-//     }
-// }
-
-// checkForEndGame();
+function checkForEndGame() {
+    let cardsFlipped = cards.forEach(card => {
+        return card.classList.contains('flip')
+    })
+    console.log(cardsFlipped);
+}
 
 //setting timer
 function add() {
@@ -151,6 +145,7 @@ function resetBoard() {
 
 window.onload = function() {
     shuffle();
+    checkForEndGame();
 }
 
 start.addEventListener('click', startGame);
