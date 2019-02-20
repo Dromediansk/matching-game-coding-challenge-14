@@ -63,6 +63,7 @@ function resetGame() {
             card.classList.remove('flip');
         }
     })
+    closeModal();
     shuffle();
     //after 1,5s start new game
     setTimeout(() => {
