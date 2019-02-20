@@ -1,8 +1,10 @@
 const cards = document.querySelectorAll('.memory-card');
 const start = document.querySelector('#start');
-const reset = document.querySelector('#reset');
-const movesBoard = document.querySelector('#moves');
-const time = document.querySelector('#time');
+const reset = document.querySelectorAll('.reset');
+const movesBoard = document.querySelectorAll('.moves');
+const time = document.querySelectorAll('.time');
+const modal = document.querySelector(".modal");
+const closeButton = document.querySelector(".close-button");
 
 let hasFlippedCard = false;
 let lockBoard = false;
@@ -14,7 +16,7 @@ let t;
 //setting timer
 function add() {
     seconds++;
-    time.textContent = seconds;
+    time.forEach(el => el.textContent = seconds);
 }
 
 function startTimer() {
@@ -27,13 +29,14 @@ function stopTimer() {
 
 function clearTimer(){
     stopTimer();
-    time.textContent = 0;
+    time.forEach(el => el.textContent = 0);
     seconds = 0;
 }
 //end of setting timer
 
 function startGame() {
     if (!gameStarted) {
+        start.removeEventListener('click', startGame);
         cards.forEach(card => card.addEventListener('click', flipCard));
         startTimer();
         gameStarted = true;
@@ -111,6 +114,23 @@ function checkForEndGame() {
     })
     if (flippedCards) {
         endGame();
+        openModal();
+    }
+}
+
+function openModal() {
+    setTimeout(() => {
+        modal.classList.add("show-modal");
+    }, 1000)
+}
+
+function closeModal() {
+    modal.classList.remove("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        closeModal();
     }
 }
 
@@ -138,7 +158,7 @@ function unflipCards() {
 //moves
 function incrementMoves() {
     moves++;
-    movesBoard.textContent = moves;
+    movesBoard.forEach(el => el.textContent = moves);
 }
 
 function resetBoard() {
@@ -151,4 +171,6 @@ window.onload = function() {
 }
 
 start.addEventListener('click', startGame);
-reset.addEventListener('click', resetGame);
+reset.forEach(button => button.addEventListener("click", resetGame))
+closeButton.addEventListener("click", closeModal);
+window.addEventListener("click", windowOnClick);
