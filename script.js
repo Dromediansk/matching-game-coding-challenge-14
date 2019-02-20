@@ -1,3 +1,4 @@
+//selecting elements
 const cards = document.querySelectorAll('.memory-card');
 const start = document.querySelector('#start');
 const reset = document.querySelectorAll('.reset');
@@ -6,6 +7,7 @@ const time = document.querySelectorAll('.time');
 const modal = document.querySelector(".modal");
 const closeButton = document.querySelector(".close-button");
 
+//defining variables
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -13,7 +15,7 @@ let gameStarted = false;
 let moves = timer = seconds = 0;
 let t;
 
-//setting timer
+//timer section
 function add() {
     seconds++;
     time.forEach(el => el.textContent = seconds);
@@ -32,7 +34,7 @@ function clearTimer(){
     time.forEach(el => el.textContent = 0);
     seconds = 0;
 }
-//end of setting timer
+//end of timer section
 
 function startGame() {
     if (!gameStarted) {
@@ -54,7 +56,7 @@ function resetGame() {
     clearTimer();
     //reset moves
     moves = 0;
-    movesBoard.textContent = moves;
+    movesBoard.forEach((el) => el.textContent = moves);
     //unflip all cards
     cards.forEach(card => {
         if (card.classList.contains('flip')) {
@@ -118,6 +120,7 @@ function checkForEndGame() {
     }
 }
 
+//modal section
 function openModal() {
     setTimeout(() => {
         modal.classList.add("show-modal");
@@ -133,6 +136,7 @@ function windowOnClick(event) {
         closeModal();
     }
 }
+//end of modal section
 
 //it's a match
 function disableCards() {
@@ -170,6 +174,7 @@ window.onload = function() {
     shuffle();
 }
 
+//event listeners
 start.addEventListener('click', startGame);
 reset.forEach(button => button.addEventListener("click", resetGame))
 closeButton.addEventListener("click", closeModal);
