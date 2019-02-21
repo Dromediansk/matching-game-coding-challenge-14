@@ -37,6 +37,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .navbar-container > div, button {
@@ -53,8 +54,7 @@ body {
     font-size: 1.2em;
 }
 
-.time-container h3,
-.moves-container h3 {
+.box h3 {
     text-transform: uppercase;
 }
 
@@ -65,18 +65,30 @@ body {
   }
 
 .btn {
-    padding: 0.5rem;
+    margin: 0.2rem;
+    padding: 0.6rem;
     font-size: 1.4rem;
+    text-transform: uppercase;
     background: black;
     color: #ccc;
-    border: 2px solid rgba(236, 232, 232, 0.884);
-    border-radius: 10px;
     cursor: pointer;
     outline: none;
+    border: none;
+    transition: all 0.3s;
 }
 
 .btn:hover {
     color: #fff;
+}
+
+.reset, .start-game {
+    border: 2px solid rgba(236, 232, 232, 0.884);
+    border-radius: 10px;
+}
+
+#start {
+    width: 100%;
+    margin: 0.2rem;
 }
 
 .memory-game {
